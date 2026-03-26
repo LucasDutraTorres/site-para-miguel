@@ -81,8 +81,3 @@ button:active {
     transform: translateY(0);
 }
 
-.instructions {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #777;
-}
