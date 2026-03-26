@@ -9,26 +9,53 @@
 <body>
 
     <div class="container">
-        
-        <h1 id="mensagem">Para o Melhor Amigo do Mundo! 
-            Miguel Arcanjo Marques Ramires
-        </h1>
-
+        <h1 id="mensagem">Para o Melhor Amigo do Mundo! Miguel Arcanjo Marques Ramires</h1>
 
         <div class="photo-container" id="photoContainer">
            
-            <img src="img/foto_mingal.jpeg" alt="Foto do meu melhor amigo" id="friendPhoto">
+            <img src="foto.png" alt="Foto do meu melhor amigo" id="friendPhoto">
         </div>
 
-        
         <button id="confettiBtn">Clique aqui para celebrar! 🎉</button>
-
-        <h1 class="instructions"></h1>
+        <h1 class="instructions">Cara, você é o meu melhor amigo, meu mano, meu chapa! Te considero muito. Toda vez que estou com você, me sinto feliz, como se nenhum problema fosse grande o suficiente para não conseguirmos enfrentar. Gosto muito de você, tamo junto, irmão!</h1>
+        <h1>Assinado: Lucas Dutra Torres</h1>
     </div>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-    <script src="js/script.js"></script>
+  
+    <script>
+   
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('confettiBtn');
+            const photo = document.getElementById('photoContainer');
+
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    console.log("Botão clicado!"); // Isso ajuda a testar se o clique está funcionando
+
+                    if (typeof confetti === 'function') {
+                        confetti({
+                            particleCount: 150,
+                            spread: 70,
+                            origin: { y: 0.6 },
+                            colors: ['#ff4757', '#2f3542', '#ffffff', '#ffa502']
+                        });
+                    } else {
+                        alert("A biblioteca de confetes ainda está carregando ou você está sem internet! Mas a animação vai funcionar.");
+                    }
+
+                    if (photo) {
+                        photo.classList.remove('pulse-animation');
+                        void photo.offsetWidth; // Truque para reiniciar a animação
+                        photo.classList.add('pulse-animation');
+                    }
+                });
+            } else {
+                console.error("Botão não encontrado!");
+            }
+        });
+    </script>
 </body>
 </html>
